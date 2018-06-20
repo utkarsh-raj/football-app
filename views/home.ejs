@@ -1,0 +1,21 @@
+<h1>Hello from the home.ejs file!!!</h1>
+<h4>Today's Matches</h4>
+<% var i = 0; %>
+<% for (i = 0; i < data.length; i++) { %>
+    <div>
+        (HOME)  <%= data[i]["home_team"]["country"] %>  vs.  <%= data[i]["away_team"]["country"] %> (AWAY)
+        <br>
+        <%= data[i]["location"] %> - <%= data[i]["venue"] %>
+        <br>
+        <%= data[i]["datetime"] %>
+        <br>
+    </div>
+    <hr>
+<% } %>
+
+<p>
+    <ul>
+        <li>Check for the Live Match Updates! <a href="/match">Here</a></li>
+        <li>Know about the Group Standings <a href="/standing">Here</a></li>
+    </ul>
+</p>

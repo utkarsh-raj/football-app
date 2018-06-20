@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="refresh" content="60">
+    </head>
+    <body>
+        <% if (data.length === 0) { %>
+            <h2>Sorry, no matches are being played now!</h2>
+            <hr>
+            <h4><a href="/">Go Back</a></h4>
+        <% } %>
+        
+        <% if (data !== []) { %>
+            <h2>Time-<%= data[0]["time"] %></h2>
+            <table border="2px solid black" align="center">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td><%= data[0]["home_team"]["country"] %> - <%= data[0]["home_team"]["goals"] %></td>
+                        <td><%= data[0]["away_team"]["country"] %> - <%= data[0]["away_team"]["goals"] %></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var i = 0; %>
+                    <% var list1 = ["attempts_on_goal", "on_target", "corners", "offsides", "ball_possession", "tackles", "yellow_cards", "red_cards", "fouls_committed"]; %>
+                    <% var events = ["Attempts on Goal", "Shots on Target", "Corners", "Offsides", "Ball Possession", "Tackles", "Yellow Cards", "Red Cards", "Fouls"]; %>
+                    <% for (i = 0; i < 9; i++) { %>
+                        <tr>
+                            <td><%= events[i] %></td>
+                            <td><%= data[0]["home_team_statistics"][list1[i]] %></td>
+                            <td><%= data[0]["away_team_statistics"][list1[i]] %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <table align="center">
+                <thead></thead>
+            </table>
+            <table align="center">
+                <tr>
+                    <td>
+                        <% for (i = 0; i < data[0]["home_team_events"].length; i++) { %>
+                            <%= data[0]["home_team_events"][i]["time"] %>- <%= data[0]["home_team_events"][i]["type_of_event"] %> <%= data[0]["home_team_events"][i]["player"] %>
+                            <hr>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% for (i = 0; i < data[0]["away_team_events"].length; i++) { %>
+                            <%= data[0]["away_team_events"][i]["time"] %>- <%= data[0]["away_team_events"][i]["type_of_event"] %> <%= data[0]["away_team_events"][i]["player"] %>
+                            <hr>
+                        <% } %>
+                    </td>
+                </tr>
+            </table>
+        <% } %>
+    </body>
+</html>

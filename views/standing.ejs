@@ -1,0 +1,81 @@
+<h1>The Tournament Standings</h1>
+
+<table>
+    <thead></thead>
+    <tbody>
+        <tr>
+            <% var k = 0; %>
+            <% for (k = 0; k < 4; k++) { %>
+                <td>
+                    <table border="2px solid black">
+                        <thead>
+                            <!--<th>-->
+                                <!--<td>Team</td>-->
+                                <!--<td>Points</td>-->
+                                <!--<td>Wins/Losses/Draws</td>-->
+                                <!--<td>Games Played</td>-->
+                            <!--</th>-->
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Group <%= data[k]["group"]["letter"] %></td>
+                            </tr>
+                            <tr>
+                                <td>Team</td>
+                                <td>Points</td>
+                                <td>Wins/Losses/Draws</td>
+                                <td>Games Played</td>
+                            </tr>
+                            <% var i = 0; %>
+                            <% for (i = 0; i < 4; i++) { %>
+                                <tr>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["country"] %></td>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["points"] %></td>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["wins"] %>/<%= data[k]["group"]["teams"][i]["team"]["losses"] %>/<%= data[k]["group"]["teams"][i]["team"]["draws"] %></td>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["games_played"] %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </td>
+            <% } %>
+        </tr>
+        <tr>
+            <% var k = 4; %>
+            <% for (k = 4; k < 8; k++) { %>
+                <td>
+                    <table border="2px solid black">
+                        <thead>
+                            <!--<th>-->
+                                <!--<td>Team</td>-->
+                                <!--<td>Points</td>-->
+                                <!--<td>Wins/Losses/Draws</td>-->
+                                <!--<td>Games Played</td>-->
+                            <!--</th>-->
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Group <%= data[k]["group"]["letter"] %></td>
+                            </tr>
+                            <tr>
+                                <td>Team</td>
+                                <td>Points</td>
+                                <td>Wins/Losses/Draws</td>
+                                <td>Games Played</td>
+                            </tr>
+                            <% var i = 0; %>
+                            <% for (i = 0; i < 4; i++) { %>
+                                <tr>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["country"] %></td>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["points"] %></td>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["wins"] %>/<%= data[k]["group"]["teams"][i]["team"]["losses"] %>/<%= data[k]["group"]["teams"][i]["team"]["draws"] %></td>
+                                    <td><%= data[k]["group"]["teams"][i]["team"]["games_played"] %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </td>
+            <% } %>
+        </tr>
+    </tbody>
+</table>
