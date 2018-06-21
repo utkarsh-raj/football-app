@@ -4,7 +4,7 @@ var request = require("request");
 var ejs = require("ejs");
 
 app.set("view engine", "ejs");
-
+PORT = process.env.PORT | 5000;
 app.get("/", function(req, res) {
     var url = "http://worldcup.sfg.io/matches/today";
     request(url, function(error, response, body) {
@@ -40,6 +40,7 @@ app.get("/standing", function(req, res) {
     });
 });
 
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(PORT, process.env.IP, function() {
     console.log("The Football App has started!!!");
+    console.log(PORT);
 });

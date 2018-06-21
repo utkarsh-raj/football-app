@@ -7,7 +7,7 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Jai Kumar Dewani & Utkarsh Raj Singh",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.6.1",
