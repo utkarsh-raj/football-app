@@ -1,5 +1,6 @@
-<h1>Hello from the home.ejs file!!!</h1>
-<h4>Today's Matches</h4>
+<% include partials/header %>
+<!--<h1>Hello from the home.ejs file!!!</h1>-->
+<h1 style="padding: 20px;">Today's Matches</h1>
 <% var i = 0; %>
 <% for (i = 0; i < data.length; i++) { %>
     <div>
@@ -14,8 +15,8 @@
 <% } %>
 
 <p>
-    <ul>
-        <li>Check for the Live Match Updates! <a href="/match">Here</a></li>
-        <li>Know about the Group Standings <a href="/standing">Here</a></li>
-    </ul>
+    Check for the Live Match Updates! <a href="/match">Here</a>
+    <br>
+    Know about the Group Standings <a href="/standing">Here</a>
 </p>
+<% include partials/footer %>
