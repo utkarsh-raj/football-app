@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="refresh" content="60">
-    </head>
-    <body>
+<% include partials/header %>
         <% if (data.length === 0) { %>
             <h2>Sorry, no matches are being played now!</h2>
             <hr>
@@ -12,46 +7,54 @@
         
         <% if (data !== []) { %>
             <h2>Time-<%= data[0]["time"] %></h2>
-            <table border="2px solid black" align="center">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td><%= data[0]["home_team"]["country"] %> - <%= data[0]["home_team"]["goals"] %></td>
-                        <td><%= data[0]["away_team"]["country"] %> - <%= data[0]["away_team"]["goals"] %></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% var i = 0; %>
-                    <% var list1 = ["attempts_on_goal", "on_target", "corners", "offsides", "ball_possession", "tackles", "yellow_cards", "red_cards", "fouls_committed"]; %>
-                    <% var events = ["Attempts on Goal", "Shots on Target", "Corners", "Offsides", "Ball Possession", "Tackles", "Yellow Cards", "Red Cards", "Fouls"]; %>
-                    <% for (i = 0; i < 9; i++) { %>
+            <div>
+                <table border="2px solid black" align="center" padding="40px">
+                    <thead>
                         <tr>
-                            <td><%= events[i] %></td>
-                            <td><%= data[0]["home_team_statistics"][list1[i]] %></td>
-                            <td><%= data[0]["away_team_statistics"][list1[i]] %></td>
+                            <td></td>
+                            <td style="padding: 10px; text-align: center;"><%= data[0]["home_team"]["country"] %> - <%= data[0]["home_team"]["goals"] %></td>
+                            <td style="padding: 10px; text-align: center;"><%= data[0]["away_team"]["country"] %> - <%= data[0]["away_team"]["goals"] %></td>
                         </tr>
-                    <% } %>
-                </tbody>
-            </table>
-            <table align="center">
-                <thead></thead>
-            </table>
-            <table align="center">
-                <tr>
-                    <td>
-                        <% for (i = 0; i < data[0]["home_team_events"].length; i++) { %>
-                            <%= data[0]["home_team_events"][i]["time"] %>- <%= data[0]["home_team_events"][i]["type_of_event"] %> <%= data[0]["home_team_events"][i]["player"] %>
-                            <hr>
+                    </thead>
+                    <tbody>
+                        <% var i = 0; %>
+                        <% var list1 = ["attempts_on_goal", "on_target", "corners", "offsides", "ball_possession", "tackles", "yellow_cards", "red_cards", "fouls_committed"]; %>
+                        <% var events = ["Attempts on Goal", "Shots on Target", "Corners", "Offsides", "Ball Possession", "Tackles", "Yellow Cards", "Red Cards", "Fouls"]; %>
+                        <% for (i = 0; i < 9; i++) { %>
+                            <tr>
+                                <td style="padding: 10px; text-align: center;"><%= events[i] %></td>
+                                <td style="padding: 10px; text-align: center;"><%= data[0]["home_team_statistics"][list1[i]] %></td>
+                                <td style="padding: 10px; text-align: center;"><%= data[0]["away_team_statistics"][list1[i]] %></td>
+                            </tr>
                         <% } %>
-                    </td>
-                    <td>
-                        <% for (i = 0; i < data[0]["away_team_events"].length; i++) { %>
-                            <%= data[0]["away_team_events"][i]["time"] %>- <%= data[0]["away_team_events"][i]["type_of_event"] %> <%= data[0]["away_team_events"][i]["player"] %>
-                            <hr>
-                        <% } %>
-                    </td>
-                </tr>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            <div class="progress" style="margin: 20px;">
+                <% var style = String(data[0]["time"]) %>
+                <% style = style.slice(0, 2); %>
+                <% style = "width: " + style + "%"; %>
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="90" style= "<%= style %>">
+                        <span class="sr-only"></span>
+                    </div>
+            </div>
+            <div>
+                <table align="center">
+                    <tr>
+                        <td style="border-right: 5px solid; padding: 20px; text-align: center;">
+                            <% for (i = 0; i < data[0]["home_team_events"].length; i++) { %>
+                                <%= data[0]["home_team_events"][i]["time"] %>- <%= data[0]["home_team_events"][i]["type_of_event"] %> <%= data[0]["home_team_events"][i]["player"] %>
+                                <hr>
+                            <% } %>
+                        </td>
+                        <td style="border-left: 5px solid; padding: 20px; text-align: center;">
+                            <% for (i = 0; i < data[0]["away_team_events"].length; i++) { %>
+                                <%= data[0]["away_team_events"][i]["time"] %>- <%= data[0]["away_team_events"][i]["type_of_event"] %> <%= data[0]["away_team_events"][i]["player"] %>
+                                <hr>
+                            <% } %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         <% } %>
-    </body>
-</html>
+<% include partials/footer %>
