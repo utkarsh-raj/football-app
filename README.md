@@ -9,4 +9,4 @@ A simple NodeJS application which retrieves World Cup Data from the estiens/worl
   2. `cd football-app`.
   3. `npm install` **-** To install all the dependencies.
   4. `node app.js` **-** to launch the application.
-  5. open *localhost:5000* in your browser to veiw the app running.
+  5. open *localhost:5000* in your browser to view the app running.
